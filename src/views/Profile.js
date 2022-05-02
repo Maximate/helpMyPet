@@ -4,16 +4,15 @@ import {useTag} from '../hooks/ApiHooks';
 import {mediaUrl} from '../utils/variables';
 import {
   Avatar,
+  Box,
   Card,
   CardContent,
+  Container,
   List,
   ListItem,
-  ListItemAvatar,
-  ListItemIcon,
   ListItemText,
   Typography,
 } from '@mui/material';
-import {AccountCircle, Badge, ContactMail} from '@mui/icons-material';
 import BackButton from '../components/BackButton';
 
 const Profile = () => {
@@ -39,41 +38,35 @@ const Profile = () => {
   return (
     <>
       <BackButton />
-      <Typography component="h1" variant="h2">
-        Profile
-      </Typography>
+      <Container sx={{width: '100%'}}>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+          }}
+        >
+          <Avatar
+            alt="User profile picture"
+            src={avatar.filename}
+            sx={{
+              width: '160px',
+              height: '160px',
+              border: '2px solid #EDAD3A',
+            }}
+          />
+        </Box>
+        <Typography sx={{textAlign: 'center', fontSize: '3rem'}}>
+          {user.username}
+        </Typography>
+      </Container>
       {user && (
         <Card>
           <CardContent>
             <List>
               <ListItem>
-                <ListItemAvatar sx={{width: '100%'}}>
-                  <Avatar
-                    variant="square"
-                    src={avatar.filename}
-                    imgProps={{
-                      alt: `${user.username}'s profile image`,
-                    }}
-                    sx={{width: '100%', height: '30vh'}}
-                  />
-                </ListItemAvatar>
-              </ListItem>
-              <ListItem>
-                <ListItemIcon>
-                  <AccountCircle />
-                </ListItemIcon>
-                <ListItemText primary={user.username} />
-              </ListItem>
-              <ListItem>
-                <ListItemIcon>
-                  <ContactMail />
-                </ListItemIcon>
                 <ListItemText primary={user.email} />
               </ListItem>
               <ListItem>
-                <ListItemIcon>
-                  <Badge />
-                </ListItemIcon>
                 <ListItemText primary={user.full_name} />
               </ListItem>
             </List>
