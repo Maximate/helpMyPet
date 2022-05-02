@@ -1,0 +1,22 @@
+
+.leaflet-top .leaflet-control {
+  margin-top: 90px !important;
+}
+
+.css-dasnyc-MuiImageListItemBar-title {
+  font-size: 30px !important;
+  line-height: 50px !important;
+  font-family: var(--HeadFont) !important;
+}
+
+.css-hk6gwf-MuiImageListItemBar-subtitle {
+  font-size: 18px !important;
+  font-family: var(--RegularFont) !important;
+  color: var(--Grey);
+}
+
+.css-3zpftd-MuiTypography-root {
+  font-family: var(--HeadFont) !important;
+  font-size: 3vw;
+}
+
