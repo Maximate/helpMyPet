@@ -7,6 +7,7 @@ import {Typography} from '@mui/material';
 import {Button} from '@mui/material';
 import {ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 import {useEffect} from 'react';
+import '../backgrounds/bg.css';
 
 const RegisterForm = ({setToggle}) => {
   const alkuarvot = {
@@ -100,69 +101,75 @@ const RegisterForm = ({setToggle}) => {
   }, [inputs]);
 
   return (
-    <Grid container>
-      <Grid item xs={12}>
-        <Typography component="h1" variant="h2" gutterBottom>
-          Register
-        </Typography>
-      </Grid>
-
-      <Grid item xs={12}>
-        <ValidatorForm onSubmit={handleSubmit}>
-          <TextValidator
-            label="username"
-            name="username"
-            onChange={handleInputChange}
-            value={inputs.username}
-            validators={validators.username}
-            errorMessages={errorMessages.username}
-            style={registerformStyle}
-          />
-          <TextValidator
-            label="password"
-            name="password"
-            type="password"
-            onChange={handleInputChange}
-            value={inputs.password}
-            validators={validators.password}
-            errorMessages={errorMessages.password}
-            style={registerformStyle}
-          />
-          <TextValidator
-            label="re-type password"
-            name="confirm"
-            type="password"
-            onChange={handleInputChange}
-            value={inputs.confirm}
-            validators={validators.confirm}
-            errorMessages={errorMessages.confirm}
-            style={registerformStyle}
-          />
-          <TextValidator
-            label="email"
-            name="email"
-            type="email"
-            onChange={handleInputChange}
-            value={inputs.email}
-            validators={validators.email}
-            errorMessages={errorMessages.email}
-            style={registerformStyle}
-          />
-          <TextValidator
-            label="full name"
-            name="full_name"
-            onChange={handleInputChange}
-            value={inputs.full_name}
-            validators={validators.full_name}
-            errorMessages={errorMessages.full_name}
-            style={registerformStyle}
-          />
-          <Button style={registerbuttonStyle} type="submit" variant="contained">
+    <div id="registerBG">
+      <Grid container>
+        <Grid item xs={12}>
+          <Typography component="h1" variant="h2" gutterBottom>
             Register
-          </Button>
-        </ValidatorForm>
+          </Typography>
+        </Grid>
+
+        <Grid item xs={12}>
+          <ValidatorForm onSubmit={handleSubmit}>
+            <TextValidator
+              label="username"
+              name="username"
+              onChange={handleInputChange}
+              value={inputs.username}
+              validators={validators.username}
+              errorMessages={errorMessages.username}
+              style={registerformStyle}
+            />
+            <TextValidator
+              label="password"
+              name="password"
+              type="password"
+              onChange={handleInputChange}
+              value={inputs.password}
+              validators={validators.password}
+              errorMessages={errorMessages.password}
+              style={registerformStyle}
+            />
+            <TextValidator
+              label="re-type password"
+              name="confirm"
+              type="password"
+              onChange={handleInputChange}
+              value={inputs.confirm}
+              validators={validators.confirm}
+              errorMessages={errorMessages.confirm}
+              style={registerformStyle}
+            />
+            <TextValidator
+              label="email"
+              name="email"
+              type="email"
+              onChange={handleInputChange}
+              value={inputs.email}
+              validators={validators.email}
+              errorMessages={errorMessages.email}
+              style={registerformStyle}
+            />
+            <TextValidator
+              label="full name"
+              name="full_name"
+              onChange={handleInputChange}
+              value={inputs.full_name}
+              validators={validators.full_name}
+              errorMessages={errorMessages.full_name}
+              style={registerformStyle}
+            />
+            <Button
+              style={registerbuttonStyle}
+              type="submit"
+              variant="contained"
+            >
+              Register
+            </Button>
+          </ValidatorForm>
+        </Grid>
       </Grid>
-    </Grid>
+    </div>
   );
 };
 

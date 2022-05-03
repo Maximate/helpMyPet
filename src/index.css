@@ -15,7 +15,8 @@ code {
 .MuiBox-root {
   position: absolute;
   color: black;
-  width: 100vw;
+  width: 70px;
+  overflow: hidden;
 }
 
 .MuiToolbar-root {
