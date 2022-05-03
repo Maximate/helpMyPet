@@ -12,6 +12,8 @@ import {useState, useEffect} from 'react';
 import {appID} from '../utils/variables';
 import {ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 import BackButton from '../components/BackButton';
+import '../backgrounds/bg.css';
+import '../views/upload.css';
 
 const Upload = () => {
   const [preview, setPreview] = useState('logo192.png');
@@ -91,131 +93,179 @@ const Upload = () => {
 
   console.log(inputs, filterInputs);
 
+  const imgStyle = {
+    display: 'block',
+    height: '200px',
+    width: '200px',
+    border: 'orange 2px solid',
+    borderRadius: '50%',
+    margin: 'auto',
+    marginTop: '20px',
+  };
+  const addpetnameStyle = {
+    marginTop: '40px',
+    borderBottom: 'solid 2px black',
+    height: '50%',
+    backgroundColor: 'white',
+    boxShadow: '5px 5px 20px -8px',
+    opacity: '0.5',
+  };
+  const addpetdescStyle = {
+    marginTop: '20px',
+    height: '200px',
+    backgroundColor: 'white',
+    boxShadow: '5px 5px 20px -8px',
+  };
+  const addpetimgStyle = {
+    marginTop: '20px',
+    height: '50px',
+    width: '100%',
+    backgroundColor: 'white',
+    boxShadow: '5px 5px 20px -8px',
+  };
+  const addButton = {
+    color: 'black',
+    backgroundColor: 'white',
+    border: 'lightblue 2px solid',
+    float: 'right',
+    width: '100px',
+    height: '50px',
+    borderRadius: '0px',
+    marginTop: '20px',
+  };
+
   return (
-    <>
-      <Grid container>
-        <Grid item xs={12}>
-          <BackButton />
-          <Typography component="h1" variant="h2" gutterBottom>
-            Upload
-          </Typography>
-        </Grid>
-
-        <Grid item xs={12}>
-          <ValidatorForm onSubmit={handleSubmit}>
-            <TextValidator
-              fullWidth
-              placeholder="title"
-              name="title"
-              onChange={handleInputChange}
-              value={inputs.title}
-              validators={validators.title}
-              errorMessages={errorMessages.title}
-            />
-            <TextValidator
-              fullWidth
-              placeholder="description"
-              name="description"
-              onChange={handleInputChange}
-              value={inputs.description}
-              validators={validators.description}
-              errorMessages={errorMessages.description}
-            />
-
-            <TextValidator
-              fullWidth
-              type="file"
-              name="file"
-              accept="image/*, video/*, audio/*"
-              onChange={handleInputChange}
-            />
-
-            {loading ? (
-              <CircularProgress />
-            ) : (
-              <Button
-                fullWidth
-                color="primary"
-                type="submit"
-                variant="contained"
-                disabled={!inputs.file}
-              >
-                Upload
-              </Button>
-            )}
-          </ValidatorForm>
-        </Grid>
-      </Grid>
-      {inputs.file && (
+    <div id="addpetBG">
+      <>
         <Grid container>
           <Grid item xs={12}>
-            <img
-              style={{
-                width: '100%',
-                filter: `
-              brightness(${filterInputs.brightness}%)
-              contrast(${filterInputs.contrast}%)
-              saturate(${filterInputs.saturation}%)
-              sepia(${filterInputs.sepia}%)
-              `,
-              }}
-              src={preview}
-              alt="preview"
-            />
+            <BackButton />
+            <Typography component="h1" variant="h2" gutterBottom></Typography>
           </Grid>
-          <Grid container>
-            <Grid item xs={12}>
-              <Typography>Brightness</Typography>
-              <Slider
-                name="brightness"
-                min={0}
-                max={200}
-                step={1}
-                valueLabelDisplay="on"
-                onChange={handleSliderChange}
-                value={filterInputs.brightness}
+
+          <Grid item xs={12}>
+            <ValidatorForm onSubmit={handleSubmit}>
+              <img
+                src={'https://placekitten.com/320'}
+                alt="Add pet image"
+                style={imgStyle}
               />
-            </Grid>
-            <Grid item xs={12}>
-              <Typography>Contrast</Typography>
-              <Slider
-                name="contrast"
-                min={0}
-                max={200}
-                step={1}
-                valueLabelDisplay="on"
-                onChange={handleSliderChange}
-                value={filterInputs.contrast}
+              <TextValidator
+                fullWidth
+                placeholder="Pet name"
+                name="title"
+                id="addpetName"
+                onChange={handleInputChange}
+                value={inputs.title}
+                validators={validators.title}
+                errorMessages={errorMessages.title}
+                style={addpetnameStyle}
               />
-            </Grid>
-            <Grid item xs={12}>
-              <Typography>Saturation</Typography>
-              <Slider
-                name="saturation"
-                min={0}
-                max={200}
-                step={1}
-                valueLabelDisplay="on"
-                onChange={handleSliderChange}
-                value={filterInputs.saturation}
+              <TextValidator
+                fullWidth
+                placeholder="Information"
+                name="description"
+                id="addpetDesc"
+                onChange={handleInputChange}
+                value={inputs.description}
+                validators={validators.description}
+                errorMessages={errorMessages.description}
+                style={addpetdescStyle}
               />
-            </Grid>
-            <Grid item xs={12}>
-              <Typography>Sepia</Typography>
-              <Slider
-                name="sepia"
-                min={0}
-                max={100}
-                step={1}
-                valueLabelDisplay="on"
-                onChange={handleSliderChange}
-                value={filterInputs.sepia}
+              <TextValidator
+                style={addpetimgStyle}
+                type="file"
+                name="file"
+                accept="image/*, video/*, audio/*"
+                onChange={handleInputChange}
               />
-            </Grid>
+              {loading ? (
+                <CircularProgress />
+              ) : (
+                <Button
+                  fullWidth
+                  type="submit"
+                  variant="contained"
+                  disabled={!inputs.file}
+                  style={addButton}
+                >
+                  Add
+                </Button>
+              )}
+            </ValidatorForm>
           </Grid>
         </Grid>
-      )}
-    </>
+        {inputs.file && (
+          <Grid container>
+            <Grid item xs={12}>
+              <img
+                style={{
+                  width: '100%',
+                  filter: `
+                brightness(${filterInputs.brightness}%)
+                contrast(${filterInputs.contrast}%)
+                saturate(${filterInputs.saturation}%)
+                sepia(${filterInputs.sepia}%)
+                `,
+                }}
+                src={preview}
+                alt="preview"
+              />
+            </Grid>
+            <Grid container>
+              <Grid item xs={12}>
+                <Typography>Brightness</Typography>
+                <Slider
+                  name="brightness"
+                  min={0}
+                  max={200}
+                  step={1}
+                  valueLabelDisplay="on"
+                  onChange={handleSliderChange}
+                  value={filterInputs.brightness}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <Typography>Contrast</Typography>
+                <Slider
+                  name="contrast"
+                  min={0}
+                  max={200}
+                  step={1}
+                  valueLabelDisplay="on"
+                  onChange={handleSliderChange}
+                  value={filterInputs.contrast}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <Typography>Saturation</Typography>
+                <Slider
+                  name="saturation"
+                  min={0}
+                  max={200}
+                  step={1}
+                  valueLabelDisplay="on"
+                  onChange={handleSliderChange}
+                  value={filterInputs.saturation}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <Typography>Sepia</Typography>
+                <Slider
+                  name="sepia"
+                  min={0}
+                  max={100}
+                  step={1}
+                  valueLabelDisplay="on"
+                  onChange={handleSliderChange}
+                  value={filterInputs.sepia}
+                />
+              </Grid>
+            </Grid>
+          </Grid>
+        )}
+      </>
+    </div>
   );
 };
 

@@ -1,0 +1,11 @@
+
+.css-1d3z3hw-MuiOutlinedInput-notchedOutline { /* Tämä poistaa kaikki inputfield borderit */
+  display: none;
+}
+
+#addpetName { /* upload.js addpetnameStyle ei ylikirjoita kaikkia ominaisuuksia, joten tämä id on tarpeellinen */
+  text-align: center;
+  padding: 5px;
+  height: 40px;
+  font-size: 30px;
+}
