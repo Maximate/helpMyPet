@@ -4,7 +4,8 @@ import {useNavigate} from 'react-router-dom';
 import {MediaContext} from '../contexts/MediaContext';
 import {useLogin} from '../hooks/ApiHooks';
 import useForm from '../hooks/FormHooks';
-
+import Logo from '../backgrounds/img/LogoHelpMyPet.svg';
+import '../backgrounds/bg.css';
 const LoginForm = () => {
   // eslint-disable-next-line no-unused-vars
   const {user, setUser} = useContext(MediaContext);
@@ -28,41 +29,70 @@ const LoginForm = () => {
     }
   };
 
+  const loginformStyle = {
+    display: 'block',
+    borderBottom: '2px solid black',
+    width: '60%',
+    margin: 'auto',
+    marginTop: '20px',
+    backgroundColor: 'white',
+  };
+  const loginbuttonStyle = {
+    display: 'block',
+    width: '120px',
+    height: '60px',
+    backgroundColor: 'white',
+    color: 'black',
+    margin: 'auto',
+    marginTop: '40px',
+    borderRadius: '0',
+    border: '2px lightblue solid',
+  };
+  const loginimgStyle = {
+    display: 'block',
+    width: '60%',
+    margin: 'auto',
+  };
+
   const {inputs, handleInputChange, handleSubmit} = useForm(doLogin, alkuarvot);
   console.log(inputs);
   return (
-    <Grid container>
-      <Grid item xs={12}>
-        <Typography component="h1" variant="h2" gutterBottom>
-          Login
-        </Typography>
-      </Grid>
+    <div id="loginBG">
+      <Grid container>
+        <Grid item xs={12}>
+          <Typography component="h1" variant="h2" gutterBottom></Typography>
+          <img src={Logo} alt="Logo" style={loginimgStyle} />
+        </Grid>
 
-      <Grid item xs={12}>
-        <form onSubmit={handleSubmit}>
-          <TextField
-            fullWidth
-            label="username"
-            placeholder="username"
-            name="username"
-            onChange={handleInputChange}
-            value={inputs.username}
-          />
-          <TextField
-            fullWidth
-            label="password"
-            placeholder="password"
-            name="password"
-            type="password"
-            onChange={handleInputChange}
-            value={inputs.password}
-          />
-          <Button fullWidth color="primary" type="submit" variant="contained">
-            Login
-          </Button>
-        </form>
+        <Grid item xs={12}>
+          <form onSubmit={handleSubmit}>
+            <TextField
+              label="username"
+              name="username"
+              onChange={handleInputChange}
+              value={inputs.username}
+              style={loginformStyle}
+            />
+            <TextField
+              label="password"
+              name="password"
+              type="password"
+              onChange={handleInputChange}
+              value={inputs.password}
+              style={loginformStyle}
+            />
+            <Button
+              id="loginButton"
+              style={loginbuttonStyle}
+              type="submit"
+              variant="contained"
+            >
+              Login
+            </Button>
+          </form>
+        </Grid>
       </Grid>
-    </Grid>
+    </div>
   );
 };
 
