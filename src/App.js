@@ -22,7 +22,7 @@ const App = () => {
     <Router basename={process.env.PUBLIC_URL}>
       <MediaProvider>
         <ThemeProvider theme={theme}>
-          <Container maxWidth="lg">
+          <Container id="container" maxWidth="lg">
             <Nav />
             <Routes>
               <Route path="/" element={<Login />} />

@@ -12,3 +12,22 @@ code {
     monospace;
 }
 
+.MuiBox-root {
+  position: absolute;
+  color: black;
+  width: 100vw;
+}
+
+.MuiToolbar-root {
+  background-color: rgba(255, 255, 255, 1);
+  color: black;
+}
+.MuiPaper-root {
+  background-color: rgba(255, 255, 255, 1);
+  color: black;
+}
+
+#container {
+  margin: 0;
+  padding: 0;
+}
