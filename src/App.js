@@ -8,6 +8,7 @@ import Login from './views/Login';
 import Logout from './views/Logout';
 import Profile from './views/Profile';
 import Single from './views/Single';
+import SingleContact from './views/SingleContact';
 import {themeOptions} from './theme/themeOptions';
 import {ThemeProvider, createTheme} from '@mui/material/styles';
 import Upload from './views/Upload';
@@ -29,6 +30,7 @@ const App = () => {
               <Route path="/home" element={<Home />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/single" element={<Single />} />
+              <Route path="/contactsingle" element={<SingleContact />} />
               <Route path="/logout" element={<Logout />} />
               <Route path="/upload" element={<Upload />} />
               <Route path="/myfiles" element={<MyFiles />} />

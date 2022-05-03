@@ -7,9 +7,9 @@ const MyFiles = () => {
     <>
       <BackButton />
       <Typography component="h1" variant="h2">
-        MyFiles
+        Offers
       </Typography>
-      <MediaTable allFiles={false} />
+      <MediaTable allFiles={true} />
     </>
   );
 };

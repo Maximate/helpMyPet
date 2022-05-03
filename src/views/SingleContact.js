@@ -16,7 +16,7 @@ import BackButton from '../components/BackButton';
 import {useEffect, useState} from 'react';
 import {useTag} from '../hooks/ApiHooks';
 
-const Single = () => {
+const SingleContact = () => {
   const [avatar, setAvatar] = useState({});
   const location = useLocation();
   console.log(location);
@@ -84,7 +84,7 @@ const Single = () => {
                 <Avatar variant={'circle'} src={avatar.filename} />
               </ListItemAvatar>
               <Typography variant="subtitle2">{file.user_id}</Typography>
-              <Button to="/contactsingle">Contact</Button>
+              <Button>Contact</Button>
             </ListItem>
           </List>
         </CardContent>
@@ -95,4 +95,4 @@ const Single = () => {
 
 // TODO in the next task: add propType for location
 
-export default Single;
+export default SingleContact;
