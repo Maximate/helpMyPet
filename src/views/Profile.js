@@ -1,16 +1,15 @@
+/* eslint-disable prettier/prettier */
 import {useContext, useEffect, useState} from 'react';
 import {MediaContext} from '../contexts/MediaContext';
 import {useTag} from '../hooks/ApiHooks';
 import {mediaUrl} from '../utils/variables';
+import '../css/Home.css';
 import {
   Avatar,
   Box,
   Card,
   CardContent,
   Container,
-  List,
-  ListItem,
-  ListItemText,
   Typography,
 } from '@mui/material';
 import BackButton from '../components/BackButton';
@@ -55,24 +54,17 @@ const Profile = () => {
             }}
           />
         </Box>
-        <Typography sx={{textAlign: 'center', fontSize: '3rem'}}>
+        <Typography sx={{textAlign: 'center', fontSize: '3rem', fontFamily: 'var(--HeadFont)'}}>
           {user.username}
         </Typography>
       </Container>
-      {user && (
-        <Card>
-          <CardContent>
-            <List>
-              <ListItem>
-                <ListItemText primary={user.email} />
-              </ListItem>
-              <ListItem>
-                <ListItemText primary={user.full_name} />
-              </ListItem>
-            </List>
-          </CardContent>
-        </Card>
-      )}
+      <Card>
+        <CardContent>
+          <Typography sx={{fontFamily: 'var(--HeadFont)'}}>Email address: {user.email}<hr></hr></Typography>
+          <Typography sx={{fontFamily: 'var(--HeadFont)', fontWeight: 'bold', fontSize: '1.2rem'}}>Description:</Typography>
+          <Typography sx={{fontFamily: 'var(--HeadFont)'}}>{user.full_name}</Typography>
+        </CardContent>
+      </Card>
     </>
   );
 };
