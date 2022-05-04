@@ -1,6 +1,6 @@
-import MediaTable from '../components/MediaTable';
 import {Typography} from '@mui/material';
 import BackButton from '../components/BackButton';
+import CommentTable from '../components/CommentTable';
 
 const MyFiles = () => {
   return (
@@ -9,7 +9,7 @@ const MyFiles = () => {
       <Typography component="h1" variant="h2">
         Offers
       </Typography>
-      <MediaTable allFiles={true} />
+      <CommentTable allFiles={false} />
     </>
   );
 };

@@ -32,7 +32,8 @@ function Map(props) {
     console.warn(`ERROR(${err.code}): ${err.message}`);
   }
 
-  if (navigator.geolocation) {
+  if (navigator.geolocation && coords == null) {
+    console.log("starting query")
     navigator.permissions
       .query({ name: "geolocation" })
       .then(function (result) {
@@ -44,13 +45,12 @@ function Map(props) {
         } else if (result.state === "denied") {
           // If denied then you have to show instructions to enable location
         }
-        result.onchange = function () {
-          console.log(result.state);
-        };
+        // result.onchange = function () {
+        //   console.log(result.state);
+        // };
       });
-  } else {
-    alert("Sorry Not available!");
   }
+  
   return coords == null ? <>Loading map</> : (
 <MapContainer className={"map"} center={[coords.latitude, coords.longitude]} zoom={13}>
   <TileLayer
