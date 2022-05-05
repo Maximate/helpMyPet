@@ -34,15 +34,16 @@ const Single = () => {
 
   const registerToggle = {
     display: 'block',
-    width: '120px',
-    height: '60px',
+    width: '100px',
+    height: '50px',
     backgroundColor: 'white',
     color: 'black',
     float: 'right',
     marginTop: '40px',
-    borderRadius: '0',
+    borderRadius: '0px',
     border: '2px solid var(--Blue)',
     fontFamily: 'var(--RegularFont)',
+    marginRight: '45px',
   };
 
   const {getTag} = useTag();
