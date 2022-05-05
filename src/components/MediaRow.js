@@ -32,11 +32,10 @@ const MediaRow = ({file, userId, deleteMedia}) => {
       container
       key={file.file_id}
       direction="row"
-      justifyContent="flex-start"
       alignItems="center"
-      style={{minWidth: "100vw", padding: '5px'}}
+      style={{maxWidth: "100vw", minWidth: "100vw", justifyContent: "center", padding: '5px',}}
     >
-      {/* clipPath: 'circle(50%)' borderRadius: '50%'  */}
+
       <img
         src={file.thumbnails ? mediaUrl + file.thumbnails.w320 : 'logo512.png'}
         alt={file.title}
@@ -48,8 +47,8 @@ const MediaRow = ({file, userId, deleteMedia}) => {
         saturate(${filters.saturation}%)
         sepia(${filters.sepia}%)`,
         borderRadius: '50%',
-        height: '120px',
-        width: '120px',
+        height: '13vw',
+        width: '13vw',
         border: '2px solid var(--Orange)',
         marginRight: '3%'
                }}
@@ -60,12 +59,15 @@ const MediaRow = ({file, userId, deleteMedia}) => {
         minWidth: '60vw'}}
         actionIcon={
           <>
+          <div style={{display: "flex"}}>
             <Button
               variant="contained"
               component={Link}
               to={'/single'}
               state={{file}}
+              style={{background: "white"}}
             >
+
               View
             </Button>
             {userId === file.user_id && (
@@ -82,7 +84,9 @@ const MediaRow = ({file, userId, deleteMedia}) => {
                   Delete
                 </Button>
               </>
+
             )}
+            </div>
           </>
         }
         title={file.title}
