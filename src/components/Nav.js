@@ -49,12 +49,15 @@ const Nav = () => {
     display: "inline-block", borderRadius: "60px",
     boxShadow: "7px 7px 15px #888", padding: "0.5em 0.6em", marginRight: "5vw", marginLeft: "10vw"
   };
+  const newPet = {
+    width: "50px", height: "50px"
+  };
   const font = {familyFont: 'var(--HeadFont) !important'};
 
   return (
     <Box >
       <Fab
-        style={{ marginTop: "5%", border: '2px solid var(--Blue)', backgroundColor: 'white'}}
+        style={{position: "relative", left: "9%", marginTop: "5%", border: '2px solid var(--Blue)', backgroundColor: 'white'}}
         onClick={() => {
           setOpen(!open);
         }}>
