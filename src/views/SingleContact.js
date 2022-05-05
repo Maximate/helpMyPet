@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { mediaUrl } from '../utils/variables';
 import { useMedia } from '../hooks/ApiHooks';
 import { Button } from '@mui/material';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   Card,
   CardContent,
@@ -19,12 +19,13 @@ import { safeParseJson } from '../utils/functions';
 import BackButton from '../components/BackButton';
 import { useEffect, useState } from 'react';
 import { useTag } from '../hooks/ApiHooks';
-import {MediaContext} from '../contexts/MediaContext';
-import {useContext} from 'react';
+import { MediaContext } from '../contexts/MediaContext';
+import { useContext } from 'react';
+import ContactCard from '../components/ContactCard';
 
 const SingleContact = () => {
   const [avatar, setAvatar] = useState({});
-  const {user} = useContext(MediaContext);
+  const { user } = useContext(MediaContext);
   const { postComment, loading } = useMedia();
   const location = useLocation();
   console.log(location);
@@ -74,7 +75,7 @@ const SingleContact = () => {
       console.log('stuff is', token, file.file_id)
       const params = new URLSearchParams({
         'file_id': file.file_id,
-        'comment': user.email
+        'comment': JSON.stringify({ email: user.email, username: user.username })
       })
       const mediaData = await postComment(params, token);
     } catch (error) {
@@ -91,10 +92,10 @@ const SingleContact = () => {
   return (
     <>
       <BackButton />
-      <div style={{display: 'flex', justifyContent: 'space-evenly'}}>
-      <Typography component="h1" variant="h2">
-        {file.title}
-      </Typography>
+      <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+        <Typography component="h1" variant="h2">
+          {file.title}
+        </Typography>
 
         <CardMedia
           component={file.media_type === 'image' ? 'img' : file.media_type}
@@ -109,38 +110,14 @@ const SingleContact = () => {
             border: '2px solid var(--Orange)',
           }}
         />
-        </div>
-        {/* //{description} */}
-              <Card>
-        <CardContent>
-          <Typography>
-            <text className='contactText'>
-              Hi,<br />
-              I would like to take care of your pet {file.title}.<br /><br />
-              Check out and contact me:<br /><br />
-
-              Account: <Button
-              component={Link}
-              to={'/profile'}
-              >{user.username}</Button> <br />
-
-              Email: {user.email}
-            </text>
-          </Typography>
-          <List>
-            <ListItem>
-              <ListItemAvatar>
-                <Avatar variant={'circle'} src={avatar.filename} />
-              </ListItemAvatar>
-              <Typography variant="subtitle2">{file.user_id}</Typography>
-
-            </ListItem>
-          </List>
-        </CardContent>
-      </Card>
-      <Button style={registerToggle} onClick={() => {
-                sendContact()
-              }} >Send</Button>
+      </div>
+      {/* //{description} */}
+      <ContactCard userName={user.username} userEmail={user.email} file={file}></ContactCard>
+      <Button style={registerToggle}
+        component={Link} to={'/home'}
+        onClick={() => {
+          sendContact()
+        }} >Send</Button>
     </>
   );
 };

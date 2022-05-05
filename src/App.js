@@ -1,7 +1,6 @@
 import {Container} from '@mui/material';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import './App.css';
-import Nav from './components/Nav';
 import {MediaProvider} from './contexts/MediaContext';
 import Home from './views/Home';
 import Login from './views/Login';
@@ -24,7 +23,6 @@ const App = () => {
       <MediaProvider>
         <ThemeProvider theme={theme}>
           <Container maxWidth="lg" id="container">
-            <Nav />
             <Routes>
               <Route path="/" element={<Login />} />
               <Route path="/home" element={<Home />} />
