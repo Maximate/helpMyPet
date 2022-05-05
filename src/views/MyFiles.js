@@ -4,13 +4,19 @@ import MediaTable from '../components/MediaTable';
 
 const Offers = () => {
   return (
-    <>
-      <BackButton />
-      <Typography component="h1" variant="h2">
-        MyPets
-      </Typography>
-      <MediaTable allFiles={false} />
-    </>
+    <div id="mypetsBG">
+      <>
+        <BackButton />
+        <Typography
+          component="h1"
+          variant="h2"
+          style={{textAlign: 'center', margin: '40px'}}
+        >
+          MyPets
+        </Typography>
+        <MediaTable allFiles={false} />
+      </>
+    </div>
   );
 };
 

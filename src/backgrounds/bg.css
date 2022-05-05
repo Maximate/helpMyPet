@@ -14,7 +14,39 @@
   width: 100vw;
 }
 
+#mainpageBG {
+  background-image: url("./img/Mainpage.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+}
+
+#offerpageBG {
+  background-image: url("./img/Offers.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+}
+
+#contactBG {
+  background-image: url("./img/Contactpet.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+}
+
 #addpetBG {
+  background-image: url("./img/addpetBG.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+}
+
+#mypetsBG {
   background-image: url("./img/addpetBG.svg");
   background-repeat: no-repeat;
   background-size: cover;

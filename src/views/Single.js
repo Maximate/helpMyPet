@@ -68,60 +68,62 @@ const Single = () => {
   console.log(avatar);
 
   return (
-    <>
-      <BackButton />
-      <div
-        style={{
-          display: 'block',
-          textAlign: 'center',
-        }}
-      >
-        <CardMedia
-          component={file.media_type === 'image' ? 'img' : file.media_type}
-          controls={true}
-          poster={mediaUrl + file.screenshot}
-          src={mediaUrl + file.filename}
-          alt={file.title}
-          sx={{
-            borderRadius: '50%',
-            height: '120px',
-            width: '120px',
-            border: '2px solid var(--Orange)',
-            margin: 'auto',
-            marginBottom: '20px',
+    <div id="contactBG">
+      <>
+        <BackButton />
+        <div
+          style={{
+            display: 'block',
+            textAlign: 'center',
           }}
-        />
-        <Typography
-          component="h1"
-          variant="h2"
-          style={{fontFamily: 'var(--HeadFont)', display: 'block'}}
         >
-          {file.title}
-        </Typography>
-      </div>
-      <Card>
-        <CardContent>
-          <Typography>{description}</Typography>
-          <List>
-            <ListItem>
-              <ListItemAvatar>
-                <Avatar variant={'circle'} src={avatar.filename} />
-              </ListItemAvatar>
-              <Typography variant="subtitle2">Käyttäjä 1</Typography>
-            </ListItem>
-          </List>
-        </CardContent>
-      </Card>
-      <Button
-        style={registerToggle}
-        component={Link}
-        variant="contained"
-        to="/contactsingle"
-        state={{file}}
-      >
-        Contact
-      </Button>
-    </>
+          <CardMedia
+            component={file.media_type === 'image' ? 'img' : file.media_type}
+            controls={true}
+            poster={mediaUrl + file.screenshot}
+            src={mediaUrl + file.filename}
+            alt={file.title}
+            sx={{
+              borderRadius: '50%',
+              height: '120px',
+              width: '120px',
+              border: '2px solid var(--Orange)',
+              margin: 'auto',
+              marginBottom: '20px',
+            }}
+          />
+          <Typography
+            component="h1"
+            variant="h2"
+            style={{fontFamily: 'var(--HeadFont)', display: 'block'}}
+          >
+            {file.title}
+          </Typography>
+        </div>
+        <Card>
+          <CardContent>
+            <Typography>{description}</Typography>
+            <List>
+              <ListItem>
+                <ListItemAvatar>
+                  <Avatar variant={'circle'} src={avatar.filename} />
+                </ListItemAvatar>
+                <Typography variant="subtitle2">Käyttäjä 1</Typography>
+              </ListItem>
+            </List>
+          </CardContent>
+        </Card>
+        <Button
+          style={registerToggle}
+          component={Link}
+          variant="contained"
+          to="/contactsingle"
+          state={{file}}
+        >
+          Contact
+        </Button>
+      </>
+    </div>
   );
 };
 

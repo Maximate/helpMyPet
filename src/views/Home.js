@@ -10,14 +10,16 @@ const markers = [[60.2176171, 24.8070349]]
 // ,[60.210, 24.808],[60.200, 24.803]
 
   return (
-    <>
-      <Nav />
-      <Typography component="h1" variant="h2">
-        <Map markers={markers}></Map>
+    <div id="mainpageBG">
+      <>
+        <Nav />
+        <Typography component="h1" variant="h2">
+          <Map markers={markers}></Map>
 
-      </Typography>
-      <MediaTable />
+        </Typography>
+        <MediaTable />
       </>
+    </div>
   );
 };
 
