@@ -39,7 +39,7 @@ const Single = () => {
     backgroundColor: 'white',
     color: 'black',
     float: 'right',
-    marginTop: '40px',
+    marginTop: '20px',
     borderRadius: '0px',
     border: '2px solid var(--Blue)',
     fontFamily: 'var(--RegularFont)',
@@ -95,12 +95,23 @@ const Single = () => {
           <Typography
             component="h1"
             variant="h2"
-            style={{fontFamily: 'var(--HeadFont)', display: 'block'}}
+            style={{
+              fontFamily: 'var(--HeadFont)',
+              display: 'block',
+              margin: '20px',
+            }}
           >
             {file.title}
           </Typography>
         </div>
-        <Card>
+        <Card
+          style={{
+            width: '85vw',
+            display: 'block',
+            margin: 'auto',
+            borderRadius: '2px',
+          }}
+        >
           <CardContent>
             <Typography>{description}</Typography>
             <List>
