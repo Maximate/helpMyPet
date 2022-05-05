@@ -1,9 +1,11 @@
 
 .map {
   height: 40vh;
-  width: 90vw;
-  top: -55px;
-  border: 2px solid var(--Orange)
+  max-width: 80vw;
+  min-width: 80vw;
+  top: -46px;
+  border: 2px solid var(--Orange);
+  margin: auto;
 }
 
 .leaflet-top .leaflet-control {
