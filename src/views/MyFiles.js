@@ -9,7 +9,7 @@ const Offers = () => {
       <Typography component="h1" variant="h2">
         MyPets
       </Typography>
-      <CommentTable allFiles={false} />
+      <MediaTable allFiles={false} />
     </>
   );
 };
