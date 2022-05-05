@@ -73,7 +73,7 @@ const MediaTable = ({ allFiles = true }) => {
             if (location && location.lat) {
               const distance = calculateDistance(coords.latitude, coords.longitude, location.lat, location.lon)
               console.log('distance to other is',distance)
-              if(distance <= 10)
+              if(distance <= 50)
               return (
                 <MediaRow
                   key={index}

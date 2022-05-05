@@ -11,6 +11,7 @@ import SingleContact from './views/SingleContact';
 import {themeOptions} from './theme/themeOptions';
 import {ThemeProvider, createTheme} from '@mui/material/styles';
 import Upload from './views/Upload';
+import Offers from './views/Offers';
 import MyFiles from './views/MyFiles';
 import Modify from './views/Modify';
 
@@ -31,7 +32,8 @@ const App = () => {
               <Route path="/contactsingle" element={<SingleContact />} />
               <Route path="/logout" element={<Logout />} />
               <Route path="/upload" element={<Upload />} />
-              <Route path="/myfiles" element={<MyFiles />} />
+              <Route path="/Offers" element={<Offers />} />
+              <Route path="/MyFiles" element={<MyFiles />} />
               <Route path="/modify" element={<Modify />} />
             </Routes>
           </Container>

@@ -17,7 +17,8 @@ import { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { MediaContext } from '../contexts/MediaContext';
 import { useUser } from '../hooks/ApiHooks';
-import { Home, AccountCircle, CloudUpload, Folder } from '@mui/icons-material';
+import { Home, AccountCircle, CloudUpload, Folder, } from '@mui/icons-material';
+import PetsIcon from '@mui/icons-material/Pets';
 
 
 const Nav = () => {
@@ -84,7 +85,7 @@ const Nav = () => {
             <ListItemText style={{fontFamily: 'var(--HeadFont)'}} primary="Me" />
           </ListItemButton>
 
-          <ListItemButton component={Link} to="/myfiles">
+          <ListItemButton component={Link} to="/Offers">
             <ListItemIcon>
               <div style={iconCircule}>
                 <Folder style={iconStyle} />
@@ -100,6 +101,15 @@ const Nav = () => {
               </div>
             </ListItemIcon>
             <ListItemText primary="Home" />
+          </ListItemButton>
+
+          <ListItemButton component={Link} to={'/MyFiles'}>
+            <ListItemIcon>
+              <div style={iconCircule}>
+                <PetsIcon style={iconStyle} />
+              </div>
+            </ListItemIcon>
+            <ListItemText primary="My Pets" />
           </ListItemButton>
           {user && (
             <>
