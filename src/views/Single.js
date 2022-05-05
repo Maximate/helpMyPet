@@ -13,6 +13,7 @@ import {
 } from '@mui/material';
 import {safeParseJson} from '../utils/functions';
 import BackButton from '../components/BackButton';
+import {Link} from 'react-router-dom';
 import {useEffect, useState} from 'react';
 import {useTag} from '../hooks/ApiHooks';
 
@@ -21,7 +22,7 @@ const Single = () => {
   const location = useLocation();
   console.log(location);
   const file = location.state.file;
-  const {description, filters} = safeParseJson(file.description) || {
+  const {description} = safeParseJson(file.description) || {
     description: file.description,
     filters: {
       brightness: 100,
@@ -29,6 +30,19 @@ const Single = () => {
       saturation: 100,
       sepia: 0,
     },
+  };
+
+  const registerToggle = {
+    display: 'block',
+    width: '120px',
+    height: '60px',
+    backgroundColor: 'white',
+    color: 'black',
+    float: 'right',
+    marginTop: '40px',
+    borderRadius: '0',
+    border: '2px solid var(--Blue)',
+    fontFamily: 'var(--RegularFont)',
   };
 
   const {getTag} = useTag();
@@ -56,10 +70,15 @@ const Single = () => {
   return (
     <>
       <BackButton />
-      <Typography component="h1" variant="h2">
-        {file.title}
-      </Typography>
-      <Card>
+      <div style={{display: 'flex', justifyContent: 'space-evenly'}}>
+        <Typography
+          component="h1"
+          variant="h2"
+          style={{fontFamily: 'var(--HeadFont)'}}
+        >
+          {file.title}
+        </Typography>
+
         <CardMedia
           component={file.media_type === 'image' ? 'img' : file.media_type}
           controls={true}
@@ -67,15 +86,14 @@ const Single = () => {
           src={mediaUrl + file.filename}
           alt={file.title}
           sx={{
-            height: '60vh',
-            filter: `
-          brightness(${filters.brightness}%)
-          contrast(${filters.contrast}%)
-          saturate(${filters.saturation}%)
-          sepia(${filters.sepia}%)
-          `,
+            borderRadius: '50%',
+            height: '120px',
+            width: '120px',
+            border: '2px solid var(--Orange)',
           }}
         />
+      </div>
+      <Card>
         <CardContent>
           <Typography>{description}</Typography>
           <List>
@@ -84,11 +102,19 @@ const Single = () => {
                 <Avatar variant={'circle'} src={avatar.filename} />
               </ListItemAvatar>
               <Typography variant="subtitle2">{file.user_id}</Typography>
-              <Button to="/contactsingle">Contact</Button>
             </ListItem>
           </List>
         </CardContent>
       </Card>
+      <Button
+        style={registerToggle}
+        component={Link}
+        variant="contained"
+        to="/contactsingle"
+        state={{file}}
+      >
+        Contact
+      </Button>
     </>
   );
 };

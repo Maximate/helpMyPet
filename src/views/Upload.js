@@ -1,3 +1,5 @@
+/* eslint-disable no-unreachable */
+/* eslint-disable prettier/prettier */
 import {
   Button,
   CircularProgress,
@@ -41,6 +43,7 @@ const Upload = () => {
   };
 
   const {postMedia, loading} = useMedia();
+  const [coords, setCoords] = useState(null);
   const {postTag} = useTag();
   const navigate = useNavigate();
 
@@ -48,9 +51,11 @@ const Upload = () => {
     try {
       console.log('doUpload');
       // lisätään filtterit descriptioniin
+
       const desc = {
         description: inputs.description,
         filters: filterInputs,
+        location: {lat: coords.latitude,lon: coords.longitude}
       };
       const token = localStorage.getItem('token');
       const formdata = new FormData();
@@ -81,6 +86,25 @@ const Upload = () => {
     filterarvot
   );
 
+  const options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0,
+  };
+  function success(pos) {
+    const crd = pos.coords;
+
+    console.log('Your current position is:');
+    console.log(`Latitude : ${crd.latitude}`);
+    console.log(`Longitude: ${crd.longitude}`);
+    console.log(`More or less ${crd.accuracy} meters.`);
+    setCoords(crd);
+  }
+
+  function errors(err) {
+    console.warn(`ERROR(${err.code}): ${err.message}`);
+  }
+
   useEffect(() => {
     if (inputs.file) {
       const reader = new FileReader();
@@ -88,6 +112,25 @@ const Upload = () => {
         setPreview(reader.result);
       });
       reader.readAsDataURL(inputs.file);
+    }
+
+    if (navigator.geolocation && coords == null) {
+      console.log('starting query');
+      navigator.permissions
+        .query({name: 'geolocation'})
+        .then(function (result) {
+          if (result.state === 'granted') {
+            console.log('granted', result.state);
+            navigator.geolocation.getCurrentPosition(success);
+          } else if (result.state === 'prompt') {
+            navigator.geolocation.getCurrentPosition(success, errors, options);
+          } else if (result.state === 'denied') {
+            // If denied then you have to show instructions to enable location
+          }
+          // result.onchange = function () {
+          //   console.log(result.state);
+          // };
+        });
     }
   }, [inputs.file]);
 

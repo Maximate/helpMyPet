@@ -53,7 +53,7 @@ const Nav = () => {
   return (
     <Box >
       <Fab
-        style={{ marginTop: "5%", border: '2px solid var(--Blue)'}}
+        style={{ marginTop: "5%", border: '2px solid var(--Blue)', backgroundColor: 'white'}}
         onClick={() => {
           setOpen(!open);
         }}>

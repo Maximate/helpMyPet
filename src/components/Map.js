@@ -2,7 +2,8 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 /* eslint-disable prettier/prettier */
-import React, { useState } from 'react';
+import { style } from '@mui/system';
+import React, { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import '../css/map.css'
 
@@ -31,26 +32,28 @@ function Map(props) {
   function errors(err) {
     console.warn(`ERROR(${err.code}): ${err.message}`);
   }
+  useEffect(() => {
+    if (navigator.geolocation) {
+      console.log("starting query")
+      navigator.permissions
+        .query({ name: "geolocation" })
+        .then(function (result) {
+          if (result.state === "granted") {
+            console.log('granted',result.state);
+            navigator.geolocation.getCurrentPosition(success);
+          } else if (result.state === "prompt") {
+            navigator.geolocation.getCurrentPosition(success, errors, options);
+          } else if (result.state === "denied") {
+            // If denied then you have to show instructions to enable location
+          }
+          // result.onchange = function () {
+          //   console.log(result.state);
+          // };
+        });
+    }
+  }, []);
 
-  if (navigator.geolocation) {
-    navigator.permissions
-      .query({ name: "geolocation" })
-      .then(function (result) {
-        if (result.state === "granted") {
-          console.log('granted',result.state);
-          navigator.geolocation.getCurrentPosition(success);
-        } else if (result.state === "prompt") {
-          navigator.geolocation.getCurrentPosition(success, errors, options);
-        } else if (result.state === "denied") {
-          // If denied then you have to show instructions to enable location
-        }
-        result.onchange = function () {
-          console.log(result.state);
-        };
-      });
-  } else {
-    alert("Sorry Not available!");
-  }
+
   return coords == null ? <>Loading map</> : (
 <MapContainer className={"map"} center={[coords.latitude, coords.longitude]} zoom={13}>
   <TileLayer
@@ -58,7 +61,7 @@ function Map(props) {
     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
   />
   {props.markers.map((marker) => <Marker key={marker[0]} position={marker}></Marker>)}
-  <Marker position={[51.505, -0.09]}>
+  <Marker style={{display: 'none'}} position={[51.505, -0.09]}>
     <Popup>
       A pretty CSS3 popup. <br /> Easily customizable.
     </Popup>
