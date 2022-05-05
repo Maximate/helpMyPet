@@ -18,6 +18,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { MediaContext } from '../contexts/MediaContext';
 import { useUser } from '../hooks/ApiHooks';
 import { Home, AccountCircle, CloudUpload, Folder } from '@mui/icons-material';
+import MediaTable from '../components/MediaTable.js';
 
 
 const Nav = () => {
@@ -47,6 +48,9 @@ const Nav = () => {
   const iconCircule = {
     display: "inline-block", borderRadius: "60px",
     boxShadow: "7px 7px 15px #888", padding: "0.5em 0.6em", marginRight: "5vw", marginLeft: "10vw"
+  };
+  const newPet = {
+    width: "50px", height: "50px"
   };
   const font = {familyFont: 'var(--HeadFont) !important'};
 
