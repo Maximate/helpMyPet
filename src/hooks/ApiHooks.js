@@ -20,6 +20,7 @@ const fetchJson = async (url, options = {}) => {
 const useMedia = (showAllFiles, userId) => {
   const [update, setUpdate] = useState(false);
   const [mediaArray, setMediaArray] = useState([]);
+  const [commentArray, setCommentArray] = useState([]);
   const [loading, setLoading] = useState(false);
   const getMedia = async () => {
     try {
@@ -47,6 +48,7 @@ const useMedia = (showAllFiles, userId) => {
 
   useEffect(() => {
     getMedia();
+    getComments();
   }, [userId, update]);
 
   const postMedia = async (formdata, token) => {
@@ -60,6 +62,47 @@ const useMedia = (showAllFiles, userId) => {
         body: formdata,
       };
       return await fetchJson(baseUrl + 'media', fetchOptions);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const postComment = async (formdata, token) => {
+    try {
+      setLoading(true);
+      const fetchOptions = {
+        method: 'POST',
+        headers: {
+          'x-access-token': token,
+        },
+        body: formdata,
+      };
+      return await fetchJson(baseUrl + 'comments', fetchOptions);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const getComments = async () => {
+    try {
+      setLoading(true);
+      let media = await useTag().getTag(appID);
+      if (!showAllFiles) {
+        media = media.filter((file) => file.user_id === userId);
+      }
+      const allComments = [];
+      await Promise.all(
+        media.map(async (file) => {
+          const comments = await fetchJson(
+            `${baseUrl}comments/file/${file.file_id}`
+          );
+          comments.map((item, i) => allComments.push(item));
+        })
+      );
+
+      setCommentArray(allComments);
+    } catch (err) {
+      alert(err.message);
     } finally {
       setLoading(false);
     }
@@ -96,7 +139,16 @@ const useMedia = (showAllFiles, userId) => {
     }
   };
 
-  return {mediaArray, postMedia, deleteMedia, putMedia, loading};
+  return {
+    mediaArray,
+    postMedia,
+    deleteMedia,
+    putMedia,
+    loading,
+    postComment,
+    getComments,
+    commentArray,
+  };
 };
 
 const useUser = () => {

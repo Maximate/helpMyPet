@@ -1,4 +1,5 @@
-import {Button, ImageListItem, ImageListItemBar} from '@mui/material';
+/* eslint-disable prettier/prettier */
+import {Button, Grid, ImageListItemBar} from '@mui/material';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {mediaUrl} from '../utils/variables';
@@ -27,21 +28,36 @@ const MediaRow = ({file, userId, deleteMedia}) => {
   };
 
   return (
-    <ImageListItem key={file.file_id}>
+    <Grid
+      container
+      key={file.file_id}
+      direction="row"
+      justifyContent="flex-start"
+      alignItems="center"
+      style={{minWidth: "100vw", padding: '5px'}}
+    >
+      {/* clipPath: 'circle(50%)' borderRadius: '50%'  */}
       <img
         src={file.thumbnails ? mediaUrl + file.thumbnails.w320 : 'logo512.png'}
         alt={file.title}
-        loading="lazy"
+        loading="fast"
         style={{
           filter: `
         brightness(${filters.brightness}%)
         contrast(${filters.contrast}%)
         saturate(${filters.saturation}%)
-        sepia(${filters.sepia}%)
-        `,
-        }}
+        sepia(${filters.sepia}%)`,
+        borderRadius: '50%',
+        height: '120px',
+        width: '120px',
+        border: '2px solid var(--Orange)',
+        marginRight: '3%'
+               }}
       />
       <ImageListItemBar
+        position="below"
+        style={{borderBottom: '2px solid var(--Orange)',
+        minWidth: '60vw'}}
         actionIcon={
           <>
             <Button
@@ -72,7 +88,7 @@ const MediaRow = ({file, userId, deleteMedia}) => {
         title={file.title}
         subtitle={description}
       />
-    </ImageListItem>
+    </Grid>
   );
 };
 

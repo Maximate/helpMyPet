@@ -1,15 +1,15 @@
 import {Typography} from '@mui/material';
 import BackButton from '../components/BackButton';
-import MediaTable from '../components/MediaTable';
+import CommentTable from '../components/CommentTable';
 
 const Offers = () => {
   return (
     <>
       <BackButton />
       <Typography component="h1" variant="h2">
-        MyPets
+        Offers
       </Typography>
-      <MediaTable allFiles={false} />
+      <CommentTable allFiles={false} />
     </>
   );
 };

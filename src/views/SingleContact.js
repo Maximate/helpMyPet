@@ -1,6 +1,10 @@
-import {useLocation} from 'react-router-dom';
-import {mediaUrl} from '../utils/variables';
-import {Button} from '@mui/material';
+/* eslint-disable prettier/prettier */
+/* eslint-disable no-unused-vars */
+import { useLocation } from 'react-router-dom';
+import { mediaUrl } from '../utils/variables';
+import { useMedia } from '../hooks/ApiHooks';
+import { Button } from '@mui/material';
+import { Link } from 'react-router-dom';
 import {
   Card,
   CardContent,
@@ -11,18 +15,22 @@ import {
   ListItemAvatar,
   Avatar,
 } from '@mui/material';
-import {safeParseJson} from '../utils/functions';
+import { safeParseJson } from '../utils/functions';
 import BackButton from '../components/BackButton';
-import {Link} from 'react-router-dom';
-import {useEffect, useState} from 'react';
-import {useTag} from '../hooks/ApiHooks';
+import { useEffect, useState } from 'react';
+import { useTag } from '../hooks/ApiHooks';
+import { MediaContext } from '../contexts/MediaContext';
+import { useContext } from 'react';
+import ContactCard from '../components/ContactCard';
 
-const Single = () => {
+const SingleContact = () => {
   const [avatar, setAvatar] = useState({});
+  const { user } = useContext(MediaContext);
+  const { postComment, loading } = useMedia();
   const location = useLocation();
   console.log(location);
   const file = location.state.file;
-  const {description} = safeParseJson(file.description) || {
+  const { description, filters } = safeParseJson(file.description) || {
     description: file.description,
     filters: {
       brightness: 100,
@@ -45,7 +53,7 @@ const Single = () => {
     fontFamily: 'var(--RegularFont)',
   };
 
-  const {getTag} = useTag();
+  const { getTag } = useTag();
 
   const fetchAvatar = async () => {
     try {
@@ -61,6 +69,20 @@ const Single = () => {
     }
   };
 
+  const sendContact = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      console.log('stuff is', token, file.file_id)
+      const params = new URLSearchParams({
+        'file_id': file.file_id,
+        'comment': JSON.stringify({ email: user.email, username: user.username })
+      })
+      const mediaData = await postComment(params, token);
+    } catch (error) {
+      console.log(error)
+    }
+  };
+
   useEffect(() => {
     fetchAvatar();
   }, []);
@@ -70,12 +92,8 @@ const Single = () => {
   return (
     <>
       <BackButton />
-      <div style={{display: 'flex', justifyContent: 'space-evenly'}}>
-        <Typography
-          component="h1"
-          variant="h2"
-          style={{fontFamily: 'var(--HeadFont)'}}
-        >
+      <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+        <Typography component="h1" variant="h2">
           {file.title}
         </Typography>
 
@@ -93,32 +111,17 @@ const Single = () => {
           }}
         />
       </div>
-      <Card>
-        <CardContent>
-          <Typography>{description}</Typography>
-          <List>
-            <ListItem>
-              <ListItemAvatar>
-                <Avatar variant={'circle'} src={avatar.filename} />
-              </ListItemAvatar>
-              <Typography variant="subtitle2">{file.user_id}</Typography>
-            </ListItem>
-          </List>
-        </CardContent>
-      </Card>
-      <Button
-        style={registerToggle}
-        component={Link}
-        variant="contained"
-        to="/contactsingle"
-        state={{file}}
-      >
-        Contact
-      </Button>
+      {/* //{description} */}
+      <ContactCard userName={user.username} userEmail={user.email} file={file}></ContactCard>
+      <Button style={registerToggle}
+        component={Link} to={'/home'}
+        onClick={() => {
+          sendContact()
+        }} >Send</Button>
     </>
   );
 };
 
 // TODO in the next task: add propType for location
 
-export default Single;
+export default SingleContact;

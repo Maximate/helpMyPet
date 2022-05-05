@@ -1,4 +1,4 @@
-// eslint-disable-next-line no-unused-vars
+/* eslint-disable prettier/prettier */
 import PropTypes from 'prop-types';
 import {useUser} from '../hooks/ApiHooks';
 import useForm from '../hooks/FormHooks';
@@ -15,7 +15,7 @@ const RegisterForm = ({setToggle}) => {
     password: '',
     confirm: '',
     email: '',
-    full_name: '',
+    full_name: 'You can tell about yourself in this text field!',
   };
 
   const validators = {
@@ -23,7 +23,7 @@ const RegisterForm = ({setToggle}) => {
     password: ['required', 'minStringLength: 5'],
     confirm: ['required', 'isPasswordMatch'],
     email: ['required', 'isEmail'],
-    full_name: ['minStringLength: 2'],
+    full_name: ['minStringLength: 30'],
   };
 
   const errorMessages = {
@@ -35,7 +35,7 @@ const RegisterForm = ({setToggle}) => {
     password: ['required field', 'minimum 5 characters'],
     confirm: ['required field', 'passwords do not match'],
     email: ['required field', 'not email address'],
-    full_name: ['minimum 2 characters'],
+    full_name: ['minimum 30 characters'],
   };
 
   const {postUser, getUsername} = useUser();
@@ -151,7 +151,7 @@ const RegisterForm = ({setToggle}) => {
               style={registerformStyle}
             />
             <TextValidator
-              label="full name"
+              label="description"
               name="full_name"
               onChange={handleInputChange}
               value={inputs.full_name}
