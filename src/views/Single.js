@@ -55,7 +55,6 @@ const Single = () => {
         const ava = avatars.pop();
         ava.filename = mediaUrl + ava.filename;
         setAvatar(ava);
-        // hae kuvan pomistajan tiedot
       }
     } catch (err) {
       // console.log(err);
@@ -71,15 +70,12 @@ const Single = () => {
   return (
     <>
       <BackButton />
-      <div style={{display: 'flex', justifyContent: 'space-evenly'}}>
-        <Typography
-          component="h1"
-          variant="h2"
-          style={{fontFamily: 'var(--HeadFont)'}}
-        >
-          {file.title}
-        </Typography>
-
+      <div
+        style={{
+          display: 'block',
+          textAlign: 'center',
+        }}
+      >
         <CardMedia
           component={file.media_type === 'image' ? 'img' : file.media_type}
           controls={true}
@@ -91,8 +87,17 @@ const Single = () => {
             height: '120px',
             width: '120px',
             border: '2px solid var(--Orange)',
+            margin: 'auto',
+            marginBottom: '20px',
           }}
         />
+        <Typography
+          component="h1"
+          variant="h2"
+          style={{fontFamily: 'var(--HeadFont)', display: 'block'}}
+        >
+          {file.title}
+        </Typography>
       </div>
       <Card>
         <CardContent>
@@ -102,7 +107,7 @@ const Single = () => {
               <ListItemAvatar>
                 <Avatar variant={'circle'} src={avatar.filename} />
               </ListItemAvatar>
-              <Typography variant="subtitle2">{file.user_id}</Typography>
+              <Typography variant="subtitle2">Käyttäjä 1</Typography>
             </ListItem>
           </List>
         </CardContent>

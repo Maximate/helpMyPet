@@ -217,7 +217,6 @@ const Upload = () => {
                 style={addpetnameStyle}
               />
               <TextValidator
-                fullWidth
                 placeholder="Information"
                 name="description"
                 id="addpetDesc"
