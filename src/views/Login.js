@@ -4,6 +4,9 @@ import {useState} from 'react';
 import {Button} from '@mui/material';
 const registerToggle = {
   display: 'block',
+  position: 'absolute',
+  right: '40px',
+  bottom: '40px',
   width: '120px',
   height: '60px',
   backgroundColor: 'white',
@@ -11,7 +14,7 @@ const registerToggle = {
   float: 'right',
   marginTop: '40px',
   borderRadius: '0',
-  border: '2px orange solid',
+  border: '2px var(--Orange) solid',
 };
 const Login = () => {
   const [toggle, setToggle] = useState(true);
