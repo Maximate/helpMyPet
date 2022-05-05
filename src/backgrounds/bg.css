@@ -21,3 +21,19 @@
   height: 100vh;
   width: 100vw;
 }
+
+#profileBG {
+  background-image: url("./img/Modify.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+}
+
+#modifyBG {
+  background-image: url("./img/Modify.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+}
