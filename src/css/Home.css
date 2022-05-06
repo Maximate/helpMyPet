@@ -4,19 +4,19 @@
 }
 
 .css-dasnyc-MuiImageListItemBar-title {
-  font-size: 30px !important;
+  font-size: 3vw !important;
   line-height: 50px !important;
   font-family: var(--HeadFont) !important;
 }
 
 .css-hk6gwf-MuiImageListItemBar-subtitle {
-  font-size: 18px !important;
+  font-size: 2vw !important;
   font-family: var(--RegularFont) !important;
   color: var(--Grey);
 }
 
 .css-3zpftd-MuiTypography-root {
   font-family: var(--HeadFont) !important;
-  font-size: 3vw;
+  font-size: 4vw !important;
 }
 

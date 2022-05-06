@@ -4,7 +4,6 @@ import {
   Button,
   CircularProgress,
   Grid,
-  Slider,
   Typography,
 } from '@mui/material';
 import {useMedia, useTag} from '../hooks/ApiHooks';
@@ -18,7 +17,7 @@ import '../backgrounds/bg.css';
 import '../views/upload.css';
 
 const Upload = () => {
-  const [preview, setPreview] = useState('logo192.png');
+  const [setPreview] = useState('logo192.png');
   const alkuarvot = {
     title: '',
     description: '',
@@ -50,7 +49,6 @@ const Upload = () => {
   const doUpload = async () => {
     try {
       console.log('doUpload');
-      // lisätään filtterit descriptioniin
 
       const desc = {
         description: inputs.description,
@@ -81,7 +79,7 @@ const Upload = () => {
     alkuarvot
   );
 
-  const {inputs: filterInputs, handleInputChange: handleSliderChange} = useForm(
+  const {inputs: filterInputs} = useForm(
     null,
     filterarvot
   );
@@ -127,9 +125,6 @@ const Upload = () => {
           } else if (result.state === 'denied') {
             // If denied then you have to show instructions to enable location
           }
-          // result.onchange = function () {
-          //   console.log(result.state);
-          // };
         });
     }
   }, [inputs.file]);
@@ -138,13 +133,14 @@ const Upload = () => {
 
   const imgStyle = {
     display: 'block',
-    height: '200px',
-    width: '200px',
+    height: '240px',
+    width: '240px',
     border: 'var(--Orange) 2px solid',
     borderRadius: '50%',
     margin: 'auto',
     marginTop: '40px',
     marginBottom: '40px',
+    boxShadow: "7px 7px 15px #888",
   };
   const addpetnameStyle = {
     display: 'block',
@@ -155,7 +151,7 @@ const Upload = () => {
     width: '70vw',
     textAlign: 'center',
     backgroundColor: 'white',
-    boxShadow: '5px 5px 20px -8px',
+    boxShadow: "7px 7px 15px #888",
     opacity: '0.8',
     borderRadius: '2px',
   };
@@ -166,7 +162,7 @@ const Upload = () => {
     marginBottom: '20px',
     height: '200px',
     backgroundColor: 'white',
-    boxShadow: '5px 5px 20px -8px',
+    boxShadow: "7px 7px 15px #888",
     borderRadius: '2px',
   };
   const addpetimgStyle = {
@@ -176,7 +172,7 @@ const Upload = () => {
     marginBottom: '20px',
     height: '50px',
     backgroundColor: 'white',
-    boxShadow: '5px 5px 20px -8px',
+    boxShadow: "7px 7px 15px #888",
     borderRadius: '2px',
   };
   const addButton = {
@@ -188,6 +184,7 @@ const Upload = () => {
     height: '50px',
     borderRadius: '0px',
     marginRight: '45px',
+    fontFamily: 'var(--RegularFont)',
   };
 
   return (
@@ -228,6 +225,7 @@ const Upload = () => {
               />
               <TextValidator
                 style={addpetimgStyle}
+                id="addpetPhoto"
                 type="file"
                 name="file"
                 accept="image/*, video/*, audio/*"
@@ -248,75 +246,6 @@ const Upload = () => {
             </ValidatorForm>
           </Grid>
         </Grid>
-        {inputs.file && (
-          <Grid container>
-            <Grid item xs={12}>
-              <img
-                style={{
-                  width: '100%',
-                  filter: `
-                brightness(${filterInputs.brightness}%)
-                contrast(${filterInputs.contrast}%)
-                saturate(${filterInputs.saturation}%)
-                sepia(${filterInputs.sepia}%)
-                `,
-                }}
-                src={preview}
-                alt="preview"
-              />
-            </Grid>
-            <Grid container>
-              <Grid item xs={12}>
-                <Typography>Brightness</Typography>
-                <Slider
-                  name="brightness"
-                  min={0}
-                  max={200}
-                  step={1}
-                  valueLabelDisplay="on"
-                  onChange={handleSliderChange}
-                  value={filterInputs.brightness}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <Typography>Contrast</Typography>
-                <Slider
-                  name="contrast"
-                  min={0}
-                  max={200}
-                  step={1}
-                  valueLabelDisplay="on"
-                  onChange={handleSliderChange}
-                  value={filterInputs.contrast}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <Typography>Saturation</Typography>
-                <Slider
-                  name="saturation"
-                  min={0}
-                  max={200}
-                  step={1}
-                  valueLabelDisplay="on"
-                  onChange={handleSliderChange}
-                  value={filterInputs.saturation}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <Typography>Sepia</Typography>
-                <Slider
-                  name="sepia"
-                  min={0}
-                  max={100}
-                  step={1}
-                  valueLabelDisplay="on"
-                  onChange={handleSliderChange}
-                  value={filterInputs.sepia}
-                />
-              </Grid>
-            </Grid>
-          </Grid>
-        )}
       </>
     </div>
   );

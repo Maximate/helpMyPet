@@ -39,7 +39,7 @@ ContactCard from './ContactCard'; const CommentRow = ({ comment, userId, deleteM
       justifyContent="flex-start"
       alignItems="center"
       style={{
-        minWidth: "100vw", padding: '5px'
+        minWidth: "100vw", padding: '5px', paddingLeft: '5%'
       }}
     >
       {file == null ? <>Loading image </> : <>
@@ -50,9 +50,11 @@ ContactCard from './ContactCard'; const CommentRow = ({ comment, userId, deleteM
           loading="fast"
           style={{
             borderRadius: '50%',
-            height: '120px',
-            width: '120px',
+            height: '13vw',
+            width: '13vw',
             border: '2px solid var(--Orange)',
+            marginRight: '3%',
+            boxShadow: "7px 7px 15px #888"
           }} /> {contactText}
         <ContactCard userName={username} userEmail={email} file={file}></ContactCard>
       </>}

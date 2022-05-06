@@ -61,7 +61,7 @@ function Map(props) {
     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
   />
   {props.markers.map((marker) => <Marker key={marker[0]} position={marker}></Marker>)}
-  <Marker style={{display: 'none'}} position={[51.505, -0.09]}>
+  <Marker position={[51.505, -0.09]}>
     <Popup>
       A pretty CSS3 popup. <br /> Easily customizable.
     </Popup>

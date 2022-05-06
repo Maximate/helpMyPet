@@ -7,7 +7,16 @@ const Offers = () => {
     <div id="offerpageBG">
       <>
         <BackButton />
-        <Typography component="h1" variant="h2">
+        <Typography
+          style={{
+            fontFamily: 'var(--HeadFont)',
+            display: 'center',
+            textAlign: 'center',
+            marginBottom: '40px',
+          }}
+          component="h1"
+          variant="h2"
+        >
           Offers
         </Typography>
         <CommentTable allFiles={false} />

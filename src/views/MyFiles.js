@@ -10,9 +10,13 @@ const Offers = () => {
         <Typography
           component="h1"
           variant="h2"
-          style={{textAlign: 'center', margin: '40px'}}
+          style={{
+            fontFamily: 'var(--HeadFont)',
+            textAlign: 'center',
+            margin: '40px',
+          }}
         >
-          MyPets
+          My Pets
         </Typography>
         <MediaTable allFiles={false} />
       </>

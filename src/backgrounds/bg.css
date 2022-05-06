@@ -18,8 +18,6 @@
   background-image: url("./img/Mainpage.svg");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
-  width: 100vw;
 }
 
 #offerpageBG {
@@ -38,6 +36,14 @@
   width: 100vw;
 }
 
+#contactsingleBG {
+  background-image: url("./img/Contactpet.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+}
+
 #addpetBG {
   background-image: url("./img/addpetBG.svg");
   background-repeat: no-repeat;
@@ -46,8 +52,24 @@
   width: 100vw;
 }
 
+#profileBG {
+  background-image: url("./img/Modify.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+}
+
 #mypetsBG {
   background-image: url("./img/addpetBG.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+}
+
+#modifyBG {
+  background-image: url("./img/Modify.svg");
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;

@@ -33,7 +33,6 @@ const Single = () => {
   };
 
   const registerToggle = {
-    display: 'block',
     width: '100px',
     height: '50px',
     backgroundColor: 'white',
@@ -85,11 +84,12 @@ const Single = () => {
             alt={file.title}
             sx={{
               borderRadius: '50%',
-              height: '120px',
-              width: '120px',
+              height: '240px',
+              width: '240px',
               border: '2px solid var(--Orange)',
               margin: 'auto',
               marginBottom: '20px',
+              boxShadow: '7px 7px 15px #888',
             }}
           />
           <Typography
@@ -98,7 +98,7 @@ const Single = () => {
             style={{
               fontFamily: 'var(--HeadFont)',
               display: 'block',
-              margin: '20px',
+              margin: '40px',
             }}
           >
             {file.title}
@@ -110,16 +110,24 @@ const Single = () => {
             display: 'block',
             margin: 'auto',
             borderRadius: '2px',
+            boxShadow: '7px 7px 15px #888',
           }}
         >
           <CardContent>
-            <Typography>{description}</Typography>
+            <Typography sx={{fontFamily: 'var(--RegularFont)'}}>
+              {description}
+            </Typography>
             <List>
               <ListItem>
                 <ListItemAvatar>
                   <Avatar variant={'circle'} src={avatar.filename} />
                 </ListItemAvatar>
-                <Typography variant="subtitle2">Käyttäjä 1</Typography>
+                <Typography
+                  sx={{fontFamily: 'var(--RegularFont)'}}
+                  variant="subtitle2"
+                >
+                  Käyttäjä 1
+                </Typography>
               </ListItem>
             </List>
           </CardContent>

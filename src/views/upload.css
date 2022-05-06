@@ -5,7 +5,15 @@
 
 #addpetName { /* upload.js addpetnameStyle ei ylikirjoita kaikkia ominaisuuksia, joten tämä id on tarpeellinen */
   text-align: center;
-  padding: 5px;
-  height: 40px;
+  height: 30px;
   font-size: 30px;
+  font-family: var(--HeadFont);
+}
+
+#addpetDesc {
+  font-family: var(--RegularFont);
+}
+
+#addpetPhoto {
+  font-family: var(--RegularFont);
 }
