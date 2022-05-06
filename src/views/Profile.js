@@ -44,16 +44,17 @@ const Profile = () => {
             sx={{
               display: 'flex',
               justifyContent: 'center',
-              Width: "100%",
             }}
           >
             <Avatar
               alt="User profile picture"
               src={avatar.filename}
               sx={{
-                width: '160px',
-                height: '160px',
+                width: '240px',
+                height: '240px',
                 border: '2px solid #EDAD3A',
+                margin: '40px',
+                boxShadow: "7px 7px 15px #888",
               }}
             />
           </Box>
@@ -61,11 +62,11 @@ const Profile = () => {
             {user.username}
           </Typography>
         </Container>
-        <Card>
-          <CardContent sx={{fontFamily: 'var(--HeadFont)'}}>
-            <Typography>Email address: {user.email}<hr></hr></Typography>
-            <Typography sx={{fontWeight: 'bold', fontSize: '1.2rem'}}>Description:</Typography>
-            <Typography>{user.full_name}</Typography>
+        <Card sx={{display: 'block', margin: 'auto', width: '85vw', boxShadow: "7px 7px 15px #888", borderRadius: '2px'}}>
+          <CardContent>
+            <Typography sx={{fontFamily: 'var(--RegularFont)'}}>Email address: {user.email}<hr></hr></Typography>
+            <Typography sx={{fontFamily: 'var(--HeadFont)', fontWeight: 'bold', fontSize: '1.2rem'}}>Description:</Typography>
+            <Typography sx={{fontFamily: 'var(--RegularFont)'}}>{user.full_name}</Typography>
           </CardContent>
         </Card>
       </>

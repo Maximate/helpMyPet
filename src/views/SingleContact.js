@@ -50,7 +50,8 @@ const SingleContact = () => {
     borderRadius: '0',
     border: '2px solid var(--Blue)',
     fontFamily: 'var(--RegularFont)',
-    textAlign: 'center'
+    textAlign: 'center',
+    marginRight: '45px',
   };
 
   const { getTag } = useTag();
@@ -90,13 +91,9 @@ const SingleContact = () => {
   console.log(avatar);
 
   return (
-    <>
-      <BackButton />
-      <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
-        <Typography component="h1" variant="h2">
-          {file.title}
-        </Typography>
-
+    <div id="contactsingleBG">
+      <>
+        <BackButton />
         <CardMedia
           component={file.media_type === 'image' ? 'img' : file.media_type}
           controls={true}
@@ -105,20 +102,27 @@ const SingleContact = () => {
           alt={file.title}
           sx={{
             borderRadius: '50%',
-            height: '120px',
-            width: '120px',
+            height: '240px',
+            width: '240px',
             border: '2px solid var(--Orange)',
-            boxShadow: "7px 7px 15px #888"
+            boxShadow: "7px 7px 15px #888",
+            display: 'block',
+            margin: 'auto',
+            marginBottom: '40px',
           }}
         />
-      </div>
-      <div style={{display:'flex',justifyContent:'center',marginTop:'8%'}} ><ContactCard  userName={user.username} userEmail={user.email} file={file}></ContactCard></div>
-      <Button style={registerToggle}
-        component={Link} to={'/home'}
-        onClick={() => {
-          sendContact()
-        }} >Send</Button>
-    </>
+        <Typography sx={{ textAlign: 'center', fontFamily: 'var(--HeadFont)' }} component="h1" variant="h2">
+          {file.title}
+        </Typography>
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '5%' }} >
+          <ContactCard userName={user.username} userEmail={user.email} file={file}></ContactCard></div>
+        <Button style={registerToggle}
+          component={Link} to={'/home'}
+          onClick={() => {
+            sendContact()
+          }} >Send</Button>
+      </>
+    </div>
   );
 };
 

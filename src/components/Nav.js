@@ -21,6 +21,7 @@ import { Home, AccountCircle, CloudUpload, Folder, } from '@mui/icons-material';
 import UserIcon from '../assets/userIcon.png';
 import MailIcon from '../assets/mail.png';
 import PawIcon from '../assets/pawIcon.png';
+import Menu from '../assets/menu.svg';
 
 
 const Nav = () => {
@@ -46,7 +47,7 @@ const Nav = () => {
 
   console.log(user, open);
 
-  const iconStyle = { fontSize: "5vw", height: '5vw'};
+  const iconStyle = { fontSize: "7vw", height: '7vw'};
   const iconCircule = {
     display: "inline-block", borderRadius: "60px",
     boxShadow: "7px 7px 15px #888", padding: "0.5em 0.6em", marginRight: "5vw", marginLeft: "10vw"
@@ -59,11 +60,11 @@ const Nav = () => {
   return (
     <Box >
       <Fab
-        style={{position: "relative", left: "9%", marginTop: "5%", border: '2px solid var(--Blue)', backgroundColor: 'white'}}
+        style={{position: "relative", left: "9%", marginTop: "5%", width: '80px', height: '80px', border: '2px solid var(--Blue)', backgroundColor: 'white'}}
         onClick={() => {
           setOpen(!open);
         }}>
-        <MenuIcon fontSize="large" />
+        <img src={Menu} alt="Menu" style={{display: 'block', position: 'relative', top: '50%', transform: 'translateY(-32%)', fontSize: '2em'}} />
       </Fab>
       <Drawer
         open={open}

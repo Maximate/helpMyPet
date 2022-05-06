@@ -7,7 +7,7 @@ import {safeParseJson} from '../utils/functions';
 
 const MediaRow = ({file, userId, deleteMedia}) => {
   const doDelete = () => {
-    const ok = confirm('Do juu delte?');
+    const ok = confirm('Are you sure you want to delete pet?');
     if (ok) {
       try {
         deleteMedia(file.file_id, localStorage.getItem('token'));
