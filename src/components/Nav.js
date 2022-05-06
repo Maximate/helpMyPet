@@ -10,7 +10,7 @@ import {
   ListItemIcon,
   ListItemText,
 } from '@mui/material';
-import snake from '../assets/snake.svg'
+import Snake from '../assets/snake.svg'
 import logo from '../assets/logo-drawer.svg'
 import MenuIcon from '@mui/icons-material/Menu';
 import { useContext, useEffect, useState } from 'react';
@@ -18,7 +18,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import { MediaContext } from '../contexts/MediaContext';
 import { useUser } from '../hooks/ApiHooks';
 import { Home, AccountCircle, CloudUpload, Folder, } from '@mui/icons-material';
-import PetsIcon from '@mui/icons-material/Pets';
+import UserIcon from '../assets/userIcon.png';
+import MailIcon from '../assets/mail.png';
+import PawIcon from '../assets/pawIcon.png';
 
 
 const Nav = () => {
@@ -44,7 +46,7 @@ const Nav = () => {
 
   console.log(user, open);
 
-  const iconStyle = { fontSize: "5vw"};
+  const iconStyle = { fontSize: "5vw", height: '5vw'};
   const iconCircule = {
     display: "inline-block", borderRadius: "60px",
     boxShadow: "7px 7px 15px #888", padding: "0.5em 0.6em", marginRight: "5vw", marginLeft: "10vw"
@@ -82,7 +84,7 @@ const Nav = () => {
           <ListItemButton component={Link} to="/profile">
             <ListItemIcon>
               <div style={iconCircule}>
-                <AccountCircle style={iconStyle} />
+              <img src={UserIcon} alt="UserIcon" style={iconStyle} />
               </div>
             </ListItemIcon>
             <ListItemText style={{fontFamily: 'var(--HeadFont)'}} primary="Me" />
@@ -91,25 +93,16 @@ const Nav = () => {
           <ListItemButton component={Link} to="/Offers">
             <ListItemIcon>
               <div style={iconCircule}>
-                <Folder style={iconStyle} />
+              <img src={MailIcon} alt="mailIcon" style={iconStyle} />
               </div>
             </ListItemIcon>
             <ListItemText primary="Offers" />
           </ListItemButton>
 
-          <ListItemButton component={Link} to={'/home'}>
-            <ListItemIcon>
-              <div style={iconCircule}>
-                <Home style={iconStyle} />
-              </div>
-            </ListItemIcon>
-            <ListItemText primary="Home" />
-          </ListItemButton>
-
           <ListItemButton component={Link} to={'/MyFiles'}>
             <ListItemIcon>
               <div style={iconCircule}>
-                <PetsIcon style={iconStyle} />
+              <img src={PawIcon} alt="PawIcon" style={iconStyle} />
               </div>
             </ListItemIcon>
             <ListItemText primary="My Pets" />
