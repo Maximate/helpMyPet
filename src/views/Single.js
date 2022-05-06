@@ -33,7 +33,6 @@ const Single = () => {
   };
 
   const registerToggle = {
-    display: 'block',
     width: '100px',
     height: '50px',
     backgroundColor: 'white',

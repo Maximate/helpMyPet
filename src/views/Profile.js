@@ -44,6 +44,7 @@ const Profile = () => {
             sx={{
               display: 'flex',
               justifyContent: 'center',
+              Width: "100%",
             }}
           >
             <Avatar
@@ -60,8 +61,8 @@ const Profile = () => {
             {user.username}
           </Typography>
         </Container>
-        <Card sx={{fontFamily: 'var(--HeadFont)'}}>
-          <CardContent>
+        <Card>
+          <CardContent sx={{fontFamily: 'var(--HeadFont)'}}>
             <Typography>Email address: {user.email}<hr></hr></Typography>
             <Typography sx={{fontWeight: 'bold', fontSize: '1.2rem'}}>Description:</Typography>
             <Typography>{user.full_name}</Typography>
