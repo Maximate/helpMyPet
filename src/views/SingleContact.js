@@ -41,7 +41,6 @@ const SingleContact = () => {
   };
 
   const registerToggle = {
-    display: 'block',
     width: '120px',
     height: '60px',
     backgroundColor: 'white',
@@ -51,6 +50,7 @@ const SingleContact = () => {
     borderRadius: '0',
     border: '2px solid var(--Blue)',
     fontFamily: 'var(--RegularFont)',
+    textAlign: 'center'
   };
 
   const { getTag } = useTag();
@@ -108,11 +108,11 @@ const SingleContact = () => {
             height: '120px',
             width: '120px',
             border: '2px solid var(--Orange)',
+            boxShadow: "7px 7px 15px #888"
           }}
         />
       </div>
-      {/* //{description} */}
-      <ContactCard userName={user.username} userEmail={user.email} file={file}></ContactCard>
+      <div style={{display:'flex',justifyContent:'center',marginTop:'8%'}} ><ContactCard  userName={user.username} userEmail={user.email} file={file}></ContactCard></div>
       <Button style={registerToggle}
         component={Link} to={'/home'}
         onClick={() => {

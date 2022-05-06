@@ -27,6 +27,17 @@ const MediaRow = ({file, userId, deleteMedia}) => {
     },
   };
 
+  const homeButtons = {
+    backgroundColor: 'white',
+    color: 'var(--Grey)',
+    fontFamily: 'var(--HeadFont)',
+    borderRadius: '0',
+    border: '2px solid var(--Orange)',
+    justifyItems: 'center',
+    fontSize: '90%',
+    margin: '2%'
+  }
+
   return (
     <Grid
       container
@@ -50,7 +61,8 @@ const MediaRow = ({file, userId, deleteMedia}) => {
         height: '13vw',
         width: '13vw',
         border: '2px solid var(--Orange)',
-        marginRight: '3%'
+        marginRight: '3%',
+        boxShadow: "7px 7px 15px #888"
                }}
       />
       <ImageListItemBar
@@ -65,7 +77,7 @@ const MediaRow = ({file, userId, deleteMedia}) => {
               component={Link}
               to={'/single'}
               state={{file}}
-              style={{background: "white"}}
+              style={homeButtons}
             >
 
               View
@@ -77,10 +89,11 @@ const MediaRow = ({file, userId, deleteMedia}) => {
                   component={Link}
                   to={'/modify'}
                   state={{file}}
+                  style={homeButtons}
                 >
                   Edit
                 </Button>
-                <Button variant="contained" onClick={doDelete}>
+                <Button variant="contained" onClick={doDelete} style={homeButtons}>
                   Delete
                 </Button>
               </>
