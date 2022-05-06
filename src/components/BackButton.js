@@ -8,7 +8,7 @@ const BackButton = () => {
     margin: '20px',
     height: '80px',
     width: '80px',
-    border: '3px solid lightblue',
+    border: '3px solid var(--Blue)',
     borderRadius: '50%',
     backgroundColor: 'white',
   };

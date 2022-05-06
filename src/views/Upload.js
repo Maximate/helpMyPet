@@ -140,41 +140,54 @@ const Upload = () => {
     display: 'block',
     height: '200px',
     width: '200px',
-    border: 'orange 2px solid',
+    border: 'var(--Orange) 2px solid',
     borderRadius: '50%',
     margin: 'auto',
-    marginTop: '20px',
+    marginTop: '40px',
+    marginBottom: '40px',
   };
   const addpetnameStyle = {
-    marginTop: '40px',
+    display: 'block',
+    margin: 'auto',
+    marginBottom: '20px',
     borderBottom: 'solid 2px black',
     height: '50%',
+    width: '70vw',
+    textAlign: 'center',
     backgroundColor: 'white',
     boxShadow: '5px 5px 20px -8px',
-    opacity: '0.5',
+    opacity: '0.8',
+    borderRadius: '2px',
   };
   const addpetdescStyle = {
-    marginTop: '20px',
+    display: 'block',
+    margin: 'auto',
+    width: '85vw',
+    marginBottom: '20px',
     height: '200px',
     backgroundColor: 'white',
     boxShadow: '5px 5px 20px -8px',
+    borderRadius: '2px',
   };
   const addpetimgStyle = {
-    marginTop: '20px',
+    display: 'block',
+    margin: 'auto',
+    width: '85vw',
+    marginBottom: '20px',
     height: '50px',
-    width: '100%',
     backgroundColor: 'white',
     boxShadow: '5px 5px 20px -8px',
+    borderRadius: '2px',
   };
   const addButton = {
     color: 'black',
     backgroundColor: 'white',
-    border: 'lightblue 2px solid',
+    border: 'var(--Blue) 2px solid',
     float: 'right',
     width: '100px',
     height: '50px',
     borderRadius: '0px',
-    marginTop: '20px',
+    marginRight: '45px',
   };
 
   return (
@@ -194,7 +207,6 @@ const Upload = () => {
                 style={imgStyle}
               />
               <TextValidator
-                fullWidth
                 placeholder="Pet name"
                 name="title"
                 id="addpetName"
@@ -205,7 +217,6 @@ const Upload = () => {
                 style={addpetnameStyle}
               />
               <TextValidator
-                fullWidth
                 placeholder="Information"
                 name="description"
                 id="addpetDesc"
@@ -226,7 +237,6 @@ const Upload = () => {
                 <CircularProgress />
               ) : (
                 <Button
-                  fullWidth
                   type="submit"
                   variant="contained"
                   disabled={!inputs.file}

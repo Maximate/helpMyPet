@@ -56,9 +56,18 @@ const RegisterForm = ({setToggle}) => {
     alkuarvot
   );
 
+  const registertextStyle = {
+    textAlign: 'center',
+    margin: '5vh',
+    marginTop: '15vh',
+    fontFamily: 'var(--HeadFont)',
+  };
   const registerformStyle = {
     display: 'block',
     borderBottom: '2px solid black',
+    backgroundColor: 'white',
+    opacity: '0.8',
+    borderRadius: '1px',
     width: '60%',
     margin: 'auto',
     marginTop: '20px',
@@ -72,7 +81,7 @@ const RegisterForm = ({setToggle}) => {
     margin: 'auto',
     marginTop: '40px',
     borderRadius: '0',
-    border: '2px orange solid',
+    border: '2px var(--Orange) solid',
   };
 
   useEffect(() => {
@@ -104,7 +113,7 @@ const RegisterForm = ({setToggle}) => {
     <div id="registerBG">
       <Grid container>
         <Grid item xs={12}>
-          <Typography component="h1" variant="h2" gutterBottom>
+          <Typography style={registertextStyle} component="h1" variant="h2" gutterBottom>
             Register
           </Typography>
         </Grid>

@@ -34,15 +34,16 @@ const Single = () => {
 
   const registerToggle = {
     display: 'block',
-    width: '120px',
-    height: '60px',
+    width: '100px',
+    height: '50px',
     backgroundColor: 'white',
     color: 'black',
     float: 'right',
-    marginTop: '40px',
-    borderRadius: '0',
+    marginTop: '20px',
+    borderRadius: '0px',
     border: '2px solid var(--Blue)',
     fontFamily: 'var(--RegularFont)',
+    marginRight: '45px',
   };
 
   const {getTag} = useTag();
@@ -54,7 +55,6 @@ const Single = () => {
         const ava = avatars.pop();
         ava.filename = mediaUrl + ava.filename;
         setAvatar(ava);
-        // hae kuvan pomistajan tiedot
       }
     } catch (err) {
       // console.log(err);
@@ -68,54 +68,73 @@ const Single = () => {
   console.log(avatar);
 
   return (
-    <>
-      <BackButton />
-      <div style={{display: 'flex', justifyContent: 'space-evenly'}}>
-        <Typography
-          component="h1"
-          variant="h2"
-          style={{fontFamily: 'var(--HeadFont)'}}
-        >
-          {file.title}
-        </Typography>
-
-        <CardMedia
-          component={file.media_type === 'image' ? 'img' : file.media_type}
-          controls={true}
-          poster={mediaUrl + file.screenshot}
-          src={mediaUrl + file.filename}
-          alt={file.title}
-          sx={{
-            borderRadius: '50%',
-            height: '120px',
-            width: '120px',
-            border: '2px solid var(--Orange)',
+    <div id="contactBG">
+      <>
+        <BackButton />
+        <div
+          style={{
+            display: 'block',
+            textAlign: 'center',
           }}
-        />
-      </div>
-      <Card>
-        <CardContent>
-          <Typography>{description}</Typography>
-          <List>
-            <ListItem>
-              <ListItemAvatar>
-                <Avatar variant={'circle'} src={avatar.filename} />
-              </ListItemAvatar>
-              <Typography variant="subtitle2">{file.user_id}</Typography>
-            </ListItem>
-          </List>
-        </CardContent>
-      </Card>
-      <Button
-        style={registerToggle}
-        component={Link}
-        variant="contained"
-        to="/contactsingle"
-        state={{file}}
-      >
-        Contact
-      </Button>
-    </>
+        >
+          <CardMedia
+            component={file.media_type === 'image' ? 'img' : file.media_type}
+            controls={true}
+            poster={mediaUrl + file.screenshot}
+            src={mediaUrl + file.filename}
+            alt={file.title}
+            sx={{
+              borderRadius: '50%',
+              height: '120px',
+              width: '120px',
+              border: '2px solid var(--Orange)',
+              margin: 'auto',
+              marginBottom: '20px',
+            }}
+          />
+          <Typography
+            component="h1"
+            variant="h2"
+            style={{
+              fontFamily: 'var(--HeadFont)',
+              display: 'block',
+              margin: '20px',
+            }}
+          >
+            {file.title}
+          </Typography>
+        </div>
+        <Card
+          style={{
+            width: '85vw',
+            display: 'block',
+            margin: 'auto',
+            borderRadius: '2px',
+          }}
+        >
+          <CardContent>
+            <Typography>{description}</Typography>
+            <List>
+              <ListItem>
+                <ListItemAvatar>
+                  <Avatar variant={'circle'} src={avatar.filename} />
+                </ListItemAvatar>
+                <Typography variant="subtitle2">Käyttäjä 1</Typography>
+              </ListItem>
+            </List>
+          </CardContent>
+        </Card>
+        <Button
+          style={registerToggle}
+          component={Link}
+          variant="contained"
+          to="/contactsingle"
+          state={{file}}
+        >
+          Contact
+        </Button>
+      </>
+    </div>
   );
 };
 

@@ -46,12 +46,14 @@ const LoginForm = () => {
     margin: 'auto',
     marginTop: '40px',
     borderRadius: '0',
-    border: '2px lightblue solid',
+    border: '2px var(--Blue) solid',
   };
   const loginimgStyle = {
     display: 'block',
     width: '60%',
     margin: 'auto',
+    marginTop: '10vh',
+    marginBottom: '5vh',
   };
 
   const {inputs, handleInputChange, handleSubmit} = useForm(doLogin, alkuarvot);
